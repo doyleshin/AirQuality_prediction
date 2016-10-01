@@ -38,7 +38,7 @@ if __name__ == "__main__":
     model_lstm.add(Dense(input_dim=hidden_neurons, output_dim=in_out_neurons)) # None batches means any size of batch is able to process.
     model_lstm.add(Activation("softmax"))
     model_lstm.compile(loss="categorical_crossentropy", optimizer="sgd", metrics=['accuracy']) # sparse_categorical_crossentropy(https://keras.io/objectives/), metrics=['accuracy']
-    model_lstm.fit(X_train, y_train, batch_size=batch_size, nb_epoch=3, verbose=2, validation_split=0.05)
+    model_lstm.fit(X_train, y_train, batch_size=batch_size, nb_epoch=3, validation_split=0.05)
 
     predicted = model_lstm.predict(X_test)
     print(np.sqrt((predicted - y_test) ** 2).mean(axis=0)).mean() # Printing RMSE
